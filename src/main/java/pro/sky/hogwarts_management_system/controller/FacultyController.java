@@ -28,7 +28,7 @@ public class FacultyController {
     }
 
     @PatchMapping
-    public Faculty update(Faculty faculty) {
+    public Faculty update(@RequestBody Faculty faculty) {
         return facultyService.save(faculty);
     }
 

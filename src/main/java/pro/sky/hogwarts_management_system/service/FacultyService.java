@@ -42,11 +42,11 @@ public class FacultyService {
     }
 
     public List<Faculty> searchByColor(String color) {
-        return facultyRepository.findAllByColor(color);
+        return facultyRepository.findAllByColorIgnoreCase(color);
     }
 
     public List<Faculty> searchByName(String name) {
-        return facultyRepository.findAllByName(name);
+        return facultyRepository.findAllByNameIgnoreCase(name);
     }
 
     public List<Student> getStudentsInFaculty(Long facultyId) {
