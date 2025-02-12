@@ -1,5 +1,7 @@
 package pro.sky.hogwarts_management_system.service;
 
+import jakarta.transaction.Transactional;
+import pro.sky.hogwarts_management_system.model.Faculty;
 import pro.sky.hogwarts_management_system.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +31,7 @@ public class StudentService {
     public Optional<Student> fingById(Long id) {
         return studentRepository.findById(id);
     }
-
+    @Transactional
     public void delete(Long id) {
         studentRepository.deleteById(id);
     }
@@ -40,6 +42,11 @@ public class StudentService {
 
     public List<Student> searchByAgeBetween(Integer from, Integer to) {
         return studentRepository.findAllByAgeBetween(from, to);
+    }
+
+    public Faculty getFacultyOfStudent(Long studentId) {
+        Student student = studentRepository.findById(studentId).orElse(null);
+        return (student != null) ? student.getFaculty() : null;
     }
 
 }

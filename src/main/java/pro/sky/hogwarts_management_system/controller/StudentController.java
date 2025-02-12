@@ -1,5 +1,7 @@
 package pro.sky.hogwarts_management_system.controller;
 
+import org.springframework.http.ResponseEntity;
+import pro.sky.hogwarts_management_system.model.Faculty;
 import pro.sky.hogwarts_management_system.model.Student;
 import org.springframework.web.bind.annotation.*;
 import pro.sky.hogwarts_management_system.service.StudentService;
@@ -42,7 +44,16 @@ public class StudentController {
     }
 
     @GetMapping("/age_between")
-    public List<Student> searchByAgeBetween(@RequestParam Integer age, Integer age2) {
+    public List<Student> searchByAgeBetween(@RequestParam Integer age, @RequestParam Integer age2) {
         return studentService.searchByAgeBetween(age, age2);
+    }
+
+    @GetMapping("/{studentId}/faculty")
+    public ResponseEntity<Faculty> getFacultyOfStudent(@PathVariable Long studentId) {
+        Faculty faculty = studentService.getFacultyOfStudent(studentId);
+        if (faculty == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(faculty);
     }
 }
