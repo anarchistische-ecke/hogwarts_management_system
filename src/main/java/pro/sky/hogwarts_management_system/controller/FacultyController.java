@@ -23,7 +23,7 @@ public class FacultyController {
     }
 
     @PostMapping
-    public Faculty faculty(@RequestBody Faculty faculty) {
+    public Faculty save(@RequestBody Faculty faculty) {
         return facultyService.save(faculty);
     }
 
@@ -36,6 +36,8 @@ public class FacultyController {
     public void delete(@PathVariable Long id) {
         facultyService.delete(id);
     }
+
+
 
     @GetMapping("/search/color")
     public List<Faculty> searchFacultiesByColor(@RequestParam String color) {
@@ -52,5 +54,4 @@ public class FacultyController {
         List<Student> students = facultyService.getStudentsInFaculty(facultyId);
         return ResponseEntity.ok(students);
     }
-
 }

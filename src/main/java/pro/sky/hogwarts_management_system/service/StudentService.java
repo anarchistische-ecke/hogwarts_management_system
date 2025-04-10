@@ -1,10 +1,12 @@
 package pro.sky.hogwarts_management_system.service;
 
 import jakarta.transaction.Transactional;
+import pro.sky.hogwarts_management_system.Exceptions.FacultyNotFoundException;
 import pro.sky.hogwarts_management_system.model.Faculty;
 import pro.sky.hogwarts_management_system.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pro.sky.hogwarts_management_system.repository.FacultyRepository;
 import pro.sky.hogwarts_management_system.repository.StudentRepository;
 
 import java.util.List;
@@ -48,5 +50,4 @@ public class StudentService {
         Student student = studentRepository.findById(studentId).orElse(null);
         return (student != null) ? student.getFaculty() : null;
     }
-
 }
