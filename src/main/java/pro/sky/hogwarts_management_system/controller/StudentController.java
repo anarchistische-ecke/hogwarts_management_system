@@ -24,12 +24,13 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student save(@RequestBody Student student) {
-        return studentService.save(student);
+    public ResponseEntity<Student> save(@RequestBody Student student) {
+        Student savedStudent = studentService.save(student);
+        return ResponseEntity.ok(savedStudent);
     }
 
     @PatchMapping
-    public Student update(Student student) {
+    public Student update(@RequestBody Student student) {
         return studentService.save(student);
     }
 
