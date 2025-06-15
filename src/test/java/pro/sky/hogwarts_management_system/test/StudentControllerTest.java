@@ -30,6 +30,7 @@ public class StudentControllerTest {
 
     @Autowired
     private StudentRepository studentRepository;
+
     @Autowired
     private FacultyRepository facultyRepository;
 
