@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.List;
 
 @Data
+@ToString(exclude = "students")
 @Entity
 @Table(name = "faculty")
 @EqualsAndHashCode(of = "id")
